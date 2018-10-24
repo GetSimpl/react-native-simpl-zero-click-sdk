@@ -36,7 +36,7 @@ Add the following to `android/app/build.gradle`:
   dependencies {
       ...
       compile project(':react-native-simpl-zero-click-sdk')
-      compile "com.simpl.android:zeroClicksdk:1.0.18"
+      compile "com.simpl.android:zeroClicksdk:+"
   }
   ```
 ### iOS
