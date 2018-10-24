@@ -1,0 +1,16 @@
+PODS:
+  - SimplZeroClick (1.0.8)
+
+DEPENDENCIES:
+  - SimplZeroClick
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SimplZeroClick
+
+SPEC CHECKSUMS:
+  SimplZeroClick: dd7b3b4efb6d68081199f4f54966c25246eea490
+
+PODFILE CHECKSUM: 2226539d0231849ce3553f409d9b0ea0e6757ce4
+
+COCOAPODS: 1.5.3
