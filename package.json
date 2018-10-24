@@ -1,0 +1,19 @@
+{
+  "name": "react-native-simpl-zero-click-sdk",
+  "version": "0.0.1",
+  "description": "A React Native wrapper for Simpl Zero Click SDK",
+  "main": "index.js",
+  "keywords": [
+    "simpl",
+    "simpl-zero-click-sdk",
+    "react-native"
+  ],
+  "author": "Simpl",
+  "contributors": [
+    {
+      "name": "Devarajan",
+      "email": "devarajan@getsimpl.com"
+    }
+  ],
+  "license": ""
+}
