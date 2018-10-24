@@ -65,3 +65,5 @@ SimplSdk.generateZeroClickToken((token) => console.log(token), (errorMessage) =>
 //To open redirection URL
 SimplSdk.openRedirectionURL(urlString, (successMessage) => console.log(successMessage), (errorMessage) => console.log(errorMessage));
 ```
+
+ Sample project can be found [here](https://github.com/GetSimpl/react-native-simpl-zero-click-sdk/tree/master/example)
