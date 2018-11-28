@@ -1,4 +1,3 @@
-
 #import "SimplSdk.h"
 #import <SimplZeroClick/SimplZeroClick.h>
 #import <SimplZeroClick/GSUser.h>
@@ -45,12 +44,21 @@ RCT_EXPORT_METHOD(openRedirectionURL:(NSString *)url successCallback:(RCTRespons
     }];
 }
 
-RCT_EXPORT_METHOD(generateFingerprint:(NSDictionary *)merchantParams callback:(RCTResponseSenderBlock)callback) {
+RCT_EXPORT_METHOD(generateFingerprint:(NSDictionary *)merchantParams (NSString *)merchantId mobileNumber:(NSString *)mobileNumber emailId:(NSString *)emailId callback:(RCTResponseSenderBlock)callback) {
+    [GSManager initializeWithMerchantID:merchantId];
+    self.user = [[GSUser alloc] initWithPhoneNumber:mobileNumber email:emailId];
+    self.user.headerParams = merchantParams;
     
+    [[GSManager sharedManager] generateFingerprintForUser: self.user onCompletion:^(NSDictionary * _Nullable fpData, NSError * _Nullable error){
+        if(error != nil) {
+            errorCallback(@[[error localizedDescription]]);
+        } else {
+            successCallback(@[fpData]);
+        }
+    }];
 }
 
 - (dispatch_queue_t)methodQueue {
     return dispatch_get_main_queue();
 }
-
 @end
