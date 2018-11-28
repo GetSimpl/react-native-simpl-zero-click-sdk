@@ -45,6 +45,10 @@ RCT_EXPORT_METHOD(openRedirectionURL:(NSString *)url successCallback:(RCTRespons
     }];
 }
 
+RCT_EXPORT_METHOD(generateFingerprint:(NSDictionary *)merchantParams callback:(RCTResponseSenderBlock)callback) {
+    
+}
+
 - (dispatch_queue_t)methodQueue {
     return dispatch_get_main_queue();
 }

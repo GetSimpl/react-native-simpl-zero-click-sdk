@@ -36,6 +36,11 @@ android {
 }
 repositories {
     maven { url "http://maven.getsimpl.com"}
+
+    maven {
+        url "$rootDir/../node_modules/react-native/android"
+    }
+
 }
 
 repositories {
