@@ -44,7 +44,8 @@ RCT_EXPORT_METHOD(openRedirectionURL:(NSString *)url successCallback:(RCTRespons
     }];
 }
 
-RCT_EXPORT_METHOD(generateFingerprint:(NSDictionary *)merchantParams (NSString *)merchantId mobileNumber:(NSString *)mobileNumber emailId:(NSString *)emailId callback:(RCTResponseSenderBlock)callback) {
+RCT_EXPORT_METHOD(generateFingerprint:(NSString *)merchantId mobileNumber:(NSString *)mobileNumber
+                  emailId:(NSString *)emailId merchantParams:(NSDictionary *)merchantParams callback:(RCTResponseSenderBlock)callback) {
     [GSManager initializeWithMerchantID:merchantId];
     self.user = [[GSUser alloc] initWithPhoneNumber:mobileNumber email:emailId];
     self.user.headerParams = merchantParams;

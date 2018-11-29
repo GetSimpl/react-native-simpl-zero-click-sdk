@@ -76,7 +76,8 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                 successCallback.invoke(message);
             }
 
-            @Override public void onError(final Throwable throwable) {
+            @Override
+            public void onError(final Throwable throwable) {
                 errorCallback.invoke(throwable.getLocalizedMessage());
             }
         });
@@ -84,8 +85,11 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void generateFingerprint(final ReadableMap merchantParams, final Callback callback) {
+    public void generateFingerprint(final String merchantId, final String phoneNo, final String email, final ReadableMap merchantParams, final Callback callback) {
         HashMap<String, String> params = merchantParams != null ? MapUtils.toHashMap(merchantParams) : new HashMap<String, String>();
+        params.put("merchant", merchantId );
+        params.put("phone_number", phoneNo);
+        params.put("email", email );
         SimplFingerprint.getInstance().generateFingerprint(new SimplFingerprintListener() {
             @Override
             public void fingerprintData(String fingerprint) {

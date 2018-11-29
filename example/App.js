@@ -57,8 +57,8 @@ export default class App extends Component<Props> {
   }
 
   generateFingerprint = () => {
-    SimplSdk.generateFingerprint(
-      { sample_merchant_data1: 'value1', sample_merchant_data2: 'value2', sample_merchant_data3: 'value3' },
+    SimplSdk.generateFingerprint('<merchant_id>', '2212345678', 'email@example.com',
+      { sample_merchant_param1: 'value1', sample_merchant_param2: 'value2', sample_merchant_param3: 'value3' },
       (encodedFpData) => {
         console.log(encodedFpData)
         this.setState({
