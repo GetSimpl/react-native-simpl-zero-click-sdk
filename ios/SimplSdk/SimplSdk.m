@@ -50,12 +50,11 @@ RCT_EXPORT_METHOD(generateFingerprint:(NSString *)merchantId mobileNumber:(NSStr
     self.user = [[GSUser alloc] initWithPhoneNumber:mobileNumber email:emailId];
     self.user.headerParams = merchantParams;
     
-    [[GSManager sharedManager] generateFingerprintForUser: self.user onCompletion:^(NSDictionary * _Nullable fpData, NSError * _Nullable error){
-        if(error != nil) {
-            errorCallback(@[[error localizedDescription]]);
-        } else {
-            successCallback(@[fpData]);
-        }
+    [[GSManager sharedManager] generateFingerprintForUser: self.user onCompletion:^(NSString * _Nullable fpData){
+        if(fpData == nil)
+            callback(@"");
+        else
+            callback(@[fpData]);
     }];
 }
 

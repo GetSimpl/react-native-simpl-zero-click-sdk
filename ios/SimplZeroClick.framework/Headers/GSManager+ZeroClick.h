@@ -31,5 +31,12 @@
  */
 -(void)openRedirectionURL:(NSString * __nonnull)urlString onCompletion:(void (^ __nonnull)(NSDictionary * _Nullable jsonResponse, NSError * _Nullable error))completion ;
 
+/**
+ Generates fingerprint data for the device.
+ 
+ @param user   User object
+ @param completion  Completion block for the response with following argument: NSDictionary fpData
+ */
+-(void)generateFingerprintForUser:(GSUser * __nonnull)user onCompletion : (void (^ __nonnull)(NSString * _Nullable fpData)) completion ;
 
 @end
