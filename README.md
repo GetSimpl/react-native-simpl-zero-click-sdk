@@ -64,6 +64,13 @@ SimplSdk.generateZeroClickToken((token) => console.log(token), (errorMessage) =>
 
 //To open redirection URL
 SimplSdk.openRedirectionURL(urlString, (successMessage) => console.log(successMessage), (errorMessage) => console.log(errorMessage));
+
+//To generate Fingerprint
+SimplSdk.generateFingerprint('<merchant_id>', '2212345678', 'email@example.com',
+    { sample_merchant_param1: 'value1', sample_merchant_param2: 'value2', sample_merchant_param3: 'value3' },
+    (fingerprint) => {
+        console.log(fingerprint)
+    })
 ```
 
  Sample project can be found [here](https://github.com/GetSimpl/react-native-simpl-zero-click-sdk/tree/master/example)

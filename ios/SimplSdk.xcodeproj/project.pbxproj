@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D7173AB5217DCD4E00230D91 /* SimplZeroClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7173AB4217DCD4E00230D91 /* SimplZeroClick.framework */; };
+		9A87FB5421B130A1004A2DF1 /* SimplZeroClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A87FB5321B130A1004A2DF1 /* SimplZeroClick.framework */; };
 		D78BDBAA203AFBEF00C08789 /* SimplSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BDBA9203AFBEF00C08789 /* SimplSdk.m */; };
 		D78BDBAB203AFBEF00C08789 /* SimplSdk.h in Copy Files */ = {isa = PBXBuildFile; fileRef = D78BDBA8203AFBEF00C08789 /* SimplSdk.h */; };
 /* End PBXBuildFile section */
@@ -27,7 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D7173AB4217DCD4E00230D91 /* SimplZeroClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimplZeroClick.framework; sourceTree = "<group>"; };
+		9A87FB5321B130A1004A2DF1 /* SimplZeroClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SimplZeroClick.framework; sourceTree = "<group>"; };
 		D78BDBA5203AFBEF00C08789 /* libSimplSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimplSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D78BDBA8203AFBEF00C08789 /* SimplSdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplSdk.h; sourceTree = "<group>"; };
 		D78BDBA9203AFBEF00C08789 /* SimplSdk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimplSdk.m; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7173AB5217DCD4E00230D91 /* SimplZeroClick.framework in Frameworks */,
+				9A87FB5421B130A1004A2DF1 /* SimplZeroClick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 		D78BDEF5203D3B0B00C08789 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D7173AB4217DCD4E00230D91 /* SimplZeroClick.framework */,
+				9A87FB5321B130A1004A2DF1 /* SimplZeroClick.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

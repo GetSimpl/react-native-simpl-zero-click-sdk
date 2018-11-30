@@ -37,8 +37,8 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* exampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* exampleTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		81E796F8F02C4F6EB1789CEC /* libSimplSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0F599A4DCED4F628AD6CD5F /* libSimplSdk.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		9A5D745521B1693900061BAF /* libSimplSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A5D741E21B15F4B00061BAF /* libSimplSdk.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D2F25C8F3544B80B6C94E1D8 /* Pods_exampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F0E7278CB3B1E0505A5B1B /* Pods_exampleTests.framework */; };
 		E5269BE2F170E0E1616735B3 /* Pods_example_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3D000D978E95D79DD18C27 /* Pods_example_tvOSTests.framework */; };
@@ -311,6 +311,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		9A5D741D21B15F4B00061BAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAA45CB2E6C1472D9060D67A /* SimplSdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D78BDBA5203AFBEF00C08789;
+			remoteInfo = SimplSdk;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -355,9 +362,9 @@
 		9C3D000D978E95D79DD18C27 /* Pods_example_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0F5D954F34D5404E9C0BB0 /* Pods-example-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-example-tvOSTests/Pods-example-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		F0F599A4DCED4F628AD6CD5F /* libSimplSdk.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = archive.ar; name = libSimplSdk.a; path = libSimplSdk.a; sourceTree = "<group>"; };
+		F0F599A4DCED4F628AD6CD5F /* libSimplSdk.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSimplSdk.a; sourceTree = "<group>"; };
 		F61ED5112E736AFA6788C12B /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
-		FAA45CB2E6C1472D9060D67A /* SimplSdk.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SimplSdk.xcodeproj; path = "../node_modules/react-native-simpl-zero-click-sdk/ios/SimplSdk.xcodeproj"; sourceTree = "<group>"; };
+		FAA45CB2E6C1472D9060D67A /* SimplSdk.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SimplSdk.xcodeproj; path = "../node_modules/react-native-simpl-zero-click-sdk/ios/SimplSdk.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +381,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5D745521B1693900061BAF /* libSimplSdk.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -386,7 +394,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				81E796F8F02C4F6EB1789CEC /* libSimplSdk.a in Frameworks */,
 				20FCC6AE45C2D7D0D66A100A /* Pods_example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,6 +621,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				7F7441D1223ABB1978521D10 /* Pods */,
+				9A87FC6A21B15CC3004A2DF1 /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -629,6 +637,22 @@
 				2D02E4901E0B4A5D006451C7 /* example-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9A5D73F521B15F4B00061BAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A5D741E21B15F4B00061BAF /* libSimplSdk.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A87FC6A21B15CC3004A2DF1 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F0F599A4DCED4F628AD6CD5F /* libSimplSdk.a */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
@@ -732,6 +756,9 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 2DK64UJW83;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -802,6 +829,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 9A5D73F521B15F4B00061BAF /* Products */;
+					ProjectRef = FAA45CB2E6C1472D9060D67A /* SimplSdk.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1065,6 +1096,13 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9A5D741E21B15F4B00061BAF /* libSimplSdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSimplSdk.a;
+			remoteRef = 9A5D741D21B15F4B00061BAF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
@@ -1356,6 +1394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 2DK64UJW83;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-simpl-zero-click-sdk/ios/SimplSdk",
@@ -1379,6 +1418,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2DK64UJW83;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-simpl-zero-click-sdk/ios/SimplSdk",

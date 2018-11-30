@@ -6,8 +6,8 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import SimplSdk from 'react-native-simpl-zero-click-sdk';
 
 type Props = {};
@@ -17,23 +17,24 @@ export default class App extends Component<Props> {
     super(props);
     this.state = {
       isSimplApproved: false,
-      zeroClickToken: ''
+      zeroClickToken: '',
+      fpData: ''
     }
 
   }
 
-  componentWillMount() {
+  componentDidMount() {
     SimplSdk.isApproved('<merchant_id>', '2212345678', 'email@example.com', true, (approved) => {
       console.log("approved: " + approved);
-      this.setState({isSimplApproved: approved});
+      this.setState({ isSimplApproved: approved });
     }, (error) => {
-      this.setState({isSimplApproved: false});
+      this.setState({ isSimplApproved: false });
     });
   }
 
   simplButton() {
-    if(this.state.isSimplApproved === true) {
-      return <Button title='Link Simpl' style={styles.button} onPress={()=> {
+    if (this.state.isSimplApproved === true) {
+      return <Button title='Link Simpl' style={styles.button} onPress={() => {
         SimplSdk.generateZeroClickToken((zeroClickToken) => {
           this.setState({ zeroClickToken });
           console.log(zeroClickToken); //pass this token to your server
@@ -48,11 +49,21 @@ export default class App extends Component<Props> {
   }
 
   zeroClickToken() {
-    if(this.state.zeroClickToken) {
+    if (this.state.zeroClickToken) {
       return `Token: ${this.state.zeroClickToken}`
     } else {
       '';
     }
+  }
+
+  generateFingerprint = () => {
+    SimplSdk.generateFingerprint('<merchant_id>', '2212345678', 'email@example.com',
+      { sample_merchant_param1: 'value1', sample_merchant_param2: 'value2', sample_merchant_param3: 'value3' },
+      (fingerprint) => {
+        this.setState({
+          fpData: fingerprint
+        })
+      })
   }
 
   render() {
@@ -61,6 +72,8 @@ export default class App extends Component<Props> {
         <Text style={styles.text}>Simpl Zero Click Demo!</Text>
         {this.simplButton()}
         <Text style={styles.text}>{this.zeroClickToken()}</Text>
+        <Button style={styles.button} title='Get Fingerprint' onPress={this.generateFingerprint} />
+        <Text style={styles.fptext}>{this.state.fpData}</Text>
       </View>
     );
   }
@@ -75,6 +88,11 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
+    textAlign: 'center',
+    margin: 10
+  },
+  fptext: {
+    fontSize: 14,
     textAlign: 'center',
     margin: 10
   },

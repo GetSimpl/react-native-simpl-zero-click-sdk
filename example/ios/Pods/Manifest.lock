@@ -1,5 +1,5 @@
 PODS:
-  - SimplZeroClick (1.0.8)
+  - SimplZeroClick (1.0.9)
 
 DEPENDENCIES:
   - SimplZeroClick
@@ -9,7 +9,7 @@ SPEC REPOS:
     - SimplZeroClick
 
 SPEC CHECKSUMS:
-  SimplZeroClick: dd7b3b4efb6d68081199f4f54966c25246eea490
+  SimplZeroClick: ff0285ede169771327e6b8b519cb94790f184f2a
 
 PODFILE CHECKSUM: 2226539d0231849ce3553f409d9b0ea0e6757ce4
 
