@@ -52,7 +52,7 @@ RCT_EXPORT_METHOD(generateFingerprint:(NSString *)merchantId mobileNumber:(NSStr
     
     [[GSManager sharedManager] generateFingerprintForUser: self.user onCompletion:^(NSString * _Nullable fpData){
         if(fpData == nil)
-            callback(@"");
+            callback(@[@""]);
         else
             callback(@[fpData]);
     }];
