@@ -37,6 +37,6 @@
  @param user   User object
  @param completion  Completion block for the response with following argument: NSDictionary fpData
  */
--(void)generateFingerprintForUser:(GSUser * __nonnull)user onCompletion : (void (^ __nonnull)(NSString * _Nullable fpData)) completion ;
+-(void)generateFingerprintForUser:(GSUser * __nonnull)user onCompletion : (void (^ __nonnull)(NSString * _Nullable fingerprint)) completion ;
 
 @end

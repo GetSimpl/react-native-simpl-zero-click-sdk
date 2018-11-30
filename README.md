@@ -68,11 +68,8 @@ SimplSdk.openRedirectionURL(urlString, (successMessage) => console.log(successMe
 //To generate Fingerprint
 SimplSdk.generateFingerprint('<merchant_id>', '2212345678', 'email@example.com',
     { sample_merchant_param1: 'value1', sample_merchant_param2: 'value2', sample_merchant_param3: 'value3' },
-    (encodedFpData) => {
-        console.log(encodedFpData)
-        this.setState({
-            fpData: encodedFpData
-        })
+    (fingerprint) => {
+        console.log(fingerprint)
     })
 ```
 
