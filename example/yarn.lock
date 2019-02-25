@@ -4578,9 +4578,9 @@ react-is@^16.8.1:
   version "16.8.3"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.3.tgz#4ad8b029c2a718fc0cfc746c8d4e1b7221e5387d"
 
-react-native-simpl-zero-click-sdk@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-native-simpl-zero-click-sdk/-/react-native-simpl-zero-click-sdk-1.0.2.tgz#b634c3055a58ec1e0ab5f72895f0926ca07ebd48"
+react-native-simpl-zero-click-sdk@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-simpl-zero-click-sdk/-/react-native-simpl-zero-click-sdk-1.0.3.tgz#c8c142c64cd4e61d349276f3ec5fe9ecda08bde5"
 
 react-native@0.55.4:
   version "0.55.4"
