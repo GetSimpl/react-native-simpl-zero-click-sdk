@@ -6,6 +6,11 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.4)
+  - React (0.55.4):
+    - React/Core (= 0.55.4)
+  - react-native-simpl-zero-click-sdk (1.0.2):
+    - React
+    - SimplZeroClick
   - React/Core (0.55.4):
     - yoga (= 0.55.4.React)
   - React/CxxBridge (0.55.4):
@@ -48,6 +53,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - react-native-simpl-zero-click-sdk (from `../node_modules/react-native-simpl-zero-click-sdk/react-native-simpl-zero-click-sdk.podspec`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -55,8 +61,6 @@ DEPENDENCIES:
   - React/RCTLinkingIOS (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
-  - React/RCTWebSocket (from `../node_modules/react-native`)
-  - SimplZeroClick
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -73,6 +77,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-simpl-zero-click-sdk:
+    :podspec: "../node_modules/react-native-simpl-zero-click-sdk/react-native-simpl-zero-click-sdk.podspec"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -82,9 +88,10 @@ SPEC CHECKSUMS:
   Folly: 211775e49d8da0ca658aebc8eab89d642935755c
   glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
   React: aa2040dbb6f317b95314968021bd2888816e03d5
+  react-native-simpl-zero-click-sdk: f9f2c49920e98fd6b4fceda1d90946b093172210
   SimplZeroClick: e49460b299906f9a11f323b264594298d1e19ba7
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a
 
-PODFILE CHECKSUM: 79827ae243ecd79301afc46d8f94d8af6faa9778
+PODFILE CHECKSUM: 866f1e5386469365ee1ebc40a0b5fca0e93bf36d
 
 COCOAPODS: 1.5.3

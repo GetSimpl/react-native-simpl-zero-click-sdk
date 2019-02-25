@@ -9,7 +9,6 @@ def react_native
     'RCTText',
     'RCTNetwork',
     'RCTImage',
-    'RCTWebSocket', # needed for debugging
     'RCTLinkingIOS',
   ]
   # Explicitly include Yoga if you are using RN >= 0.42.0
@@ -26,7 +25,7 @@ target 'example' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
 
-  pod 'SimplZeroClick'
+  pod 'react-native-simpl-zero-click-sdk', :podspec => '../node_modules/react-native-simpl-zero-click-sdk/react-native-simpl-zero-click-sdk.podspec'
 
   react_native
 

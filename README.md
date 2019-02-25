@@ -42,7 +42,7 @@ Add the following to `android/app/build.gradle`:
 ### iOS
 If you are using Cocoapods, Add native ZeroClick SDK to your Podfile
 
-`pod 'SimplZeroClick'`
+`pod 'react-native-simpl-zero-click-sdk', :podspec => '../node_modules/react-native-simpl-zero-click-sdk/react-native-simpl-zero-click-sdk.podspec'`
 
 Then run,
 
