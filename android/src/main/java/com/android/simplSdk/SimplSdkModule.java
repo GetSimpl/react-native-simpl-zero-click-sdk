@@ -34,53 +34,65 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void isApproved(final String merchantId, final String mobileNumber, final String emailId, final boolean isSandbox,
                            final Callback successCallback, final Callback errorCallback) {
-        Simpl.init(getReactApplicationContext(), merchantId);
-        Log.d(TAG, "isApproved(): merchantId: " + merchantId + " mobileNumber: " + mobileNumber + " emailId: " + emailId);
-        if (isSandbox)
-            Simpl.getInstance().runInSandboxMode();
-        Simpl.getInstance().isUserApproved(new SimplUser(emailId, mobileNumber))
+        try {
+            Simpl.init(getReactApplicationContext(), merchantId);
+            Log.d(TAG, "isApproved(): merchantId: " + merchantId + " mobileNumber: " + mobileNumber + " emailId: " + emailId);
+            if (isSandbox)
+                Simpl.getInstance().runInSandboxMode();
+            Simpl.getInstance().isUserApproved(new SimplUser(emailId, mobileNumber))
                 .execute(new SimplUserApprovalListenerV2() {
-                    @Override
-                    public void onSuccess(final boolean b, String s, boolean b1) {
-                        successCallback.invoke(b);
-                    }
+                        @Override
+                        public void onSuccess(final boolean b, String s, boolean b1) {
+                            successCallback.invoke(b);
+                        }
 
-                    @Override
-                    public void onError(Throwable throwable) {
-                        errorCallback.invoke(throwable.getLocalizedMessage());
-                    }
-                });
+                        @Override
+                        public void onError(Throwable throwable) {
+                            errorCallback.invoke(throwable.getLocalizedMessage());
+                        }
+                    });
+        }catch(Exception ex){
+            errorCallback.invoke(ex.getMessage);
+        }
     }
 
     @ReactMethod
     public void generateZeroClickToken(final Callback successCallback, final Callback errorCallback) {
-        Simpl.getInstance().generateZeroClickToken(new SimplZeroClickTokenListener() {
-            @Override
-            public void onSuccess(SimplZeroClickTokenAuthorization simplZeroClickTokenAuthorization) {
-                successCallback.invoke(simplZeroClickTokenAuthorization.getZeroClickToken());
-            }
+        try {
+            Simpl.getInstance().generateZeroClickToken(new SimplZeroClickTokenListener() {
+                    @Override
+                    public void onSuccess(SimplZeroClickTokenAuthorization simplZeroClickTokenAuthorization) {
+                        successCallback.invoke(simplZeroClickTokenAuthorization.getZeroClickToken());
+                    }
 
-            @Override
-            public void onFailure(Throwable throwable) {
-                errorCallback.invoke(throwable.getLocalizedMessage());
-            }
-        });
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        errorCallback.invoke(throwable.getLocalizedMessage());
+                    }
+                });
+        } catch(Exception ex){
+            errorCallback.invoke(ex.getMessage);
+        }
     }
 
     @ReactMethod
     public void openRedirectionURL(final String paymentRedirectionUrl, final Callback successCallback, final Callback errorCallback) {
-        SimplPaymentUrlRequest request = Simpl.getInstance().openRedirectionURL(getReactApplicationContext(), paymentRedirectionUrl);
+        try {
+             SimplPaymentUrlRequest request = Simpl.getInstance().openRedirectionURL(getReactApplicationContext(), paymentRedirectionUrl);
         request.execute(new SimplPaymentDueListener() {
-            @Override
-            public void onSuccess(String message) {
-                successCallback.invoke(message);
-            }
+                @Override
+                public void onSuccess(String message) {
+                    successCallback.invoke(message);
+                }
 
-            @Override
-            public void onError(final Throwable throwable) {
-                errorCallback.invoke(throwable.getLocalizedMessage());
-            }
-        });
+                @Override
+                public void onError(final Throwable throwable) {
+                    errorCallback.invoke(throwable.getLocalizedMessage());
+                }
+            });
+        } catch(Exception ex){
+            errorCallback.invoke(ex.getMessage);
+        }
 
     }
 
@@ -90,12 +102,16 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
         params.put("merchant", merchantId );
         params.put("phone_number", phoneNo);
         params.put("email", email );
-        SimplFingerprint.getInstance().generateFingerprint(new SimplFingerprintListener() {
-            @Override
-            public void fingerprintData(String fingerprint) {
-                callback.invoke(fingerprint);
-            }
-        }, params);
+        try {
+           SimplFingerprint.getInstance().generateFingerprint(new SimplFingerprintListener() {
+                    @Override
+                   public void fingerprintData(String fingerprint) {
+                       callback.invoke(fingerprint);
+                    }
+               }, params);
+        } catch(Exception ex){
+            errorCallback.invoke(ex.getMessage);
+        }
     }
 
 }
