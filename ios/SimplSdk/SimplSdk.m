@@ -11,6 +11,7 @@
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(isApproved:(NSString *)merchantId mobileNumber:(NSString *)mobileNumber emailId:(NSString *)emailId isSandbox:(BOOL)isSandbox successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
+  @try {
     [GSManager initializeWithMerchantID:merchantId];
     [GSManager enableSandBoxEnvironment:isSandbox];
     self.user = [[GSUser alloc] initWithPhoneNumber:mobileNumber email:emailId];
@@ -21,10 +22,14 @@ RCT_EXPORT_METHOD(isApproved:(NSString *)merchantId mobileNumber:(NSString *)mob
             successCallback(@[@(approved)]);
         }
     }];
+  } @catch(NSException * ex){
+    errorCallback(ex);
+  }
 
 }
 
 RCT_EXPORT_METHOD(generateZeroClickToken:(RCTResponseSenderBlock)successCallback errorCallback: (RCTResponseSenderBlock)errorCallback) {
+  @try {
     [[GSManager sharedManager] generateTokenForUser:self.user onCompletion:^(NSDictionary * _Nullable jsonResponse, NSError * _Nullable error) {
         if(error != nil) {
             errorCallback(@[[error localizedDescription]]);
@@ -32,9 +37,13 @@ RCT_EXPORT_METHOD(generateZeroClickToken:(RCTResponseSenderBlock)successCallback
             successCallback(@[jsonResponse[@"data"][@"zero_click_token"]]);
         }
     }];
+  } @catch(NSException * ex){
+    errorCallback(ex);
+  }
 }
 
 RCT_EXPORT_METHOD(openRedirectionURL:(NSString *)url successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
+  @try{
     [[GSManager sharedManager] openRedirectionURL: url onCompletion:^(NSDictionary * _Nullable jsonResponse, NSError * _Nullable error){
         if(error != nil) {
             errorCallback(@[[error localizedDescription]]);
@@ -42,10 +51,14 @@ RCT_EXPORT_METHOD(openRedirectionURL:(NSString *)url successCallback:(RCTRespons
             successCallback(@[jsonResponse[@"data"][@"message"]]);
         }
     }];
+  }@catch(NSException * ex){
+    errorCallback(ex);
+  }
 }
 
 RCT_EXPORT_METHOD(generateFingerprint:(NSString *)merchantId mobileNumber:(NSString *)mobileNumber
                   emailId:(NSString *)emailId merchantParams:(NSDictionary *)merchantParams callback:(RCTResponseSenderBlock)callback) {
+  @try{
     [GSManager initializeWithMerchantID:merchantId];
     self.user = [[GSUser alloc] initWithPhoneNumber:mobileNumber email:emailId];
     self.user.headerParams = merchantParams;
@@ -56,6 +69,9 @@ RCT_EXPORT_METHOD(generateFingerprint:(NSString *)merchantId mobileNumber:(NSStr
         else
             callback(@[fpData]);
     }];
+  }@catch(NSException * ex){
+    errorCallback(ex);
+  }
 }
 
 - (dispatch_queue_t)methodQueue {
