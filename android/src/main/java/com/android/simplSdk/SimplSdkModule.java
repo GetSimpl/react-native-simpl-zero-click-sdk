@@ -51,7 +51,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                         }
                     })
         } catch(Exception ex){
-            errorCallback.invoke(ex.toString());
+            errorCallback.invoke(ex.getMessage());
         }
     }
 
@@ -77,7 +77,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                         }
                     });
         }catch(Exception ex){
-            errorCallback.invoke(ex.toString());
+            errorCallback.invoke(ex.getMessage());
         }
     }
 
@@ -96,7 +96,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                     }
                 });
         } catch(Exception ex){
-            errorCallback.invoke(ex.toString());
+            errorCallback.invoke(ex.getMessage());
         }
     }
 
@@ -116,7 +116,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                 }
             });
         } catch(Exception ex){
-            errorCallback.invoke(ex.toString());
+            errorCallback.invoke(ex.getMessage());
         }
 
     }
@@ -135,7 +135,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                     }
                }, params);
         } catch(Exception ex){
-            callback.invoke(ex.toString());
+            callback.invoke(ex.getMessage());
         }
     }
 
