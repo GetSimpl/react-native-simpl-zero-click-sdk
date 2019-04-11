@@ -26,9 +26,33 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
         super(reactContext);
     }
 
-    @Override
-    public String getName() {
-        return "SimplSdk";
+    @ReactMethod
+    public void isUserApproved(final ReadableMap map, final Callback successCallback, final Callback errorCallback){
+        final HashMap<String, String> approvalMap = MapUtils.toHashMap(map);
+        final HashMap<String, String> paramsMap = MapUtils.stringToHashMap(String stringMap);
+
+        try {
+            Simpl.init(getReactApplicationContext(), approvalMap.get("merchantId"));
+            if (approvalMap.get("isSandbox") == "true")
+                Simpl.getInstance().runInSandboxMode();
+
+            SimplUser user = new SimplUser(approvalMap.get("email"), approvalMap.get("phone_number"));
+            Simpl.getInstance().isUserApproved(user)
+                .addParam("transaction_amount_in_paisa", paramsMap.get("amount_in_paisa"))
+                .execute(new SimplUserApprovalListenerV2() {
+                        @Override
+                        public void onSuccess(final boolean isUserApproved, String buttonText, boolean showSimplIntroduction){
+                            successCallback.invoke(isUserApproved);
+                        }
+
+                        @Override
+                        public void onError(Throwable throwable){
+                            errorCallback.invoke(throwable.getLocalizedMessage());
+                        }
+                    })
+        } catch(Exception ex){
+            errorCallback.invoke(ex.toString());
+        }
     }
 
     @ReactMethod
@@ -40,6 +64,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
             if (isSandbox)
                 Simpl.getInstance().runInSandboxMode();
             Simpl.getInstance().isUserApproved(new SimplUser(emailId, mobileNumber))
+                .addParam("transaction_amount_in_paise", amount_in_paisa)
                 .execute(new SimplUserApprovalListenerV2() {
                         @Override
                         public void onSuccess(final boolean b, String s, boolean b1) {
@@ -52,7 +77,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                         }
                     });
         }catch(Exception ex){
-            errorCallback.invoke(ex.getMessage);
+            errorCallback.invoke(ex.toString());
         }
     }
 
@@ -71,7 +96,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                     }
                 });
         } catch(Exception ex){
-            errorCallback.invoke(ex.getMessage);
+            errorCallback.invoke(ex.toString());
         }
     }
 
@@ -91,7 +116,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                 }
             });
         } catch(Exception ex){
-            errorCallback.invoke(ex.getMessage);
+            errorCallback.invoke(ex.toString());
         }
 
     }
@@ -110,7 +135,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                     }
                }, params);
         } catch(Exception ex){
-            errorCallback.invoke(ex.getMessage);
+            callback.invoke(ex.toString());
         }
     }
 
