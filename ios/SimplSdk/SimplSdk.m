@@ -10,6 +10,26 @@
 
 RCT_EXPORT_MODULE()
 
+RCT_EXPORT_METHOD(isUserApproved:(NSDictionary *)approvalParams successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback){
+    @try{
+        [GSManager initializeWithMerchantID: approvalParams[@"merchantId"]];
+        [GSManager enableSandBoxEnvironment: approvalParams[@"isSandbox"]];
+        self.user= [[GSUser alloc] initWithPhoneNumber:approvalParams[@"mobileNumber"] email:approvalParams[@"emailId"]];
+        NSDictionary *params = approvalParams[@"params"];
+        [self.user setHeaderParams:params];
+        [[GSManager sharedManager] checkApprovalForUser:self.user onCompletion:^(BOOL approved, BOOL isFirstTransactionOfUser, NSString*  buttonText, NSError*  error) {
+            if(error != nil) {
+                errorCallback(@[[error localizedDescription]]);
+            } else {
+                successCallback(@[@(approved)]);
+            }
+        }];
+    } @catch(NSException * ex) {
+        errorCallback(ex.reason);
+    }
+}
+
+
 RCT_EXPORT_METHOD(isApproved:(NSString *)merchantId mobileNumber:(NSString *)mobileNumber emailId:(NSString *)emailId isSandbox:(BOOL)isSandbox successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback amountInPaisa:(NSString *)amountInPaisa) {
   @try {
     [GSManager initializeWithMerchantID:merchantId];
