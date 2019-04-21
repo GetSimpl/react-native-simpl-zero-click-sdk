@@ -14,7 +14,7 @@ RCT_EXPORT_METHOD(isUserApproved:(NSDictionary *)approvalParams successCallback:
     @try{
         [GSManager initializeWithMerchantID: approvalParams[@"merchantId"]];
         [GSManager enableSandBoxEnvironment: approvalParams[@"isSandbox"]];
-        self.user= [[GSUser alloc] initWithPhoneNumber:approvalParams[@"mobileNumber"] email:approvalParams[@"emailId"]];
+        self.user= [[GSUser alloc] initWithPhoneNumber:approvalParams[@"phone_number"] email:approvalParams[@"email"]];
         NSDictionary *params = approvalParams[@"params"];
         [self.user setHeaderParams:params];
         [[GSManager sharedManager] checkApprovalForUser:self.user onCompletion:^(BOOL approved, BOOL isFirstTransactionOfUser, NSString*  buttonText, NSError*  error) {

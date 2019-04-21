@@ -28,17 +28,15 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void isUserApproved(final ReadableMap map, final Callback successCallback, final Callback errorCallback){
-        final HashMap<String, String> approvalMap = MapUtils.toHashMap(map);
-        final HashMap<String, String> paramsMap = MapUtils.stringToHashMap(String stringMap);
-
+        final ReadableMap paramsMap = map.getMap("params");
         try {
-            Simpl.init(getReactApplicationContext(), approvalMap.get("merchantId"));
-            if (approvalMap.get("isSandbox") == "true")
+            Simpl.init(getReactApplicationContext(), map.getString("merchantId"));
+            if (map.getBoolean("isSandbox"))
                 Simpl.getInstance().runInSandboxMode();
 
-            SimplUser user = new SimplUser(approvalMap.get("email"), approvalMap.get("phone_number"));
+            SimplUser user = new SimplUser(map.getString("email"), map.getString("phone_number"));
             Simpl.getInstance().isUserApproved(user)
-                .addParam("transaction_amount_in_paisa", paramsMap.get("amount_in_paisa"))
+                .addParam("transaction_amount_in_paisa", paramsMap.getString("amount_in_paisa"))
                 .execute(new SimplUserApprovalListenerV2() {
                         @Override
                         public void onSuccess(final boolean isUserApproved, String buttonText, boolean showSimplIntroduction){
@@ -49,10 +47,11 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                         public void onError(Throwable throwable){
                             errorCallback.invoke(throwable.getLocalizedMessage());
                         }
-                    })
+                    });
         } catch(Exception ex){
             errorCallback.invoke(ex.getMessage());
         }
+
     }
 
     @ReactMethod

@@ -19,21 +19,6 @@ class MapUtils {
         return result;
     }
 
-    private static String getValueAsString(ReadableMap map, String key){
-        ReadableType type = map.getType(key);
-        switch (type) {
-            case String:
-                return map.getString(key);
-            case Boolean:
-                return String.valueOf(map.getBoolean(key));
-            case Number:
-                return String.valueOf(map.getDouble(key));
-            case Null:
-                return "";
-        }
-        return "";
-    }
-
     public static HashMap<String, String> stringToHashMap(String stringMap){
         stringMap = stringMap.replace("{", "");
         stringMap = stringMap.replace("}", "");
