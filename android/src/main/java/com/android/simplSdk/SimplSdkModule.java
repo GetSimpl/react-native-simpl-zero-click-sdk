@@ -63,7 +63,6 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
             if (isSandbox)
                 Simpl.getInstance().runInSandboxMode();
             Simpl.getInstance().isUserApproved(new SimplUser(emailId, mobileNumber))
-                .addParam("transaction_amount_in_paise", amount_in_paisa)
                 .execute(new SimplUserApprovalListenerV2() {
                         @Override
                         public void onSuccess(final boolean b, String s, boolean b1) {
