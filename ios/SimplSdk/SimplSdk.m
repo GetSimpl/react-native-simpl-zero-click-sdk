@@ -25,7 +25,7 @@ RCT_EXPORT_METHOD(isUserApproved:(NSDictionary *)approvalParams successCallback:
             }
         }];
     } @catch(NSException * ex) {
-        errorCallback([ex reason]);
+        errorCallback(@[[ex reason]]);
     }
 }
 
@@ -43,7 +43,7 @@ RCT_EXPORT_METHOD(isApproved:(NSString *)merchantId mobileNumber:(NSString *)mob
         }
     }];
   } @catch(NSException * ex){
-    errorCallback([ex reason]);
+    errorCallback(@[[ex reason]]);
   }
 
 }
@@ -58,7 +58,7 @@ RCT_EXPORT_METHOD(generateZeroClickToken:(RCTResponseSenderBlock)successCallback
         }
     }];
   } @catch(NSException * ex){
-    errorCallback([ex reason]);
+    errorCallback(@[[ex reason]]);
   }
 }
 
@@ -72,7 +72,7 @@ RCT_EXPORT_METHOD(openRedirectionURL:(NSString *)url successCallback:(RCTRespons
         }
     }];
   }@catch(NSException * ex){
-    errorCallback([ex reason]);
+    errorCallback(@[[ex reason]]);
   }
 }
 
@@ -90,7 +90,7 @@ RCT_EXPORT_METHOD(generateFingerprint:(NSString *)merchantId mobileNumber:(NSStr
             callback(@[fpData]);
     }];
   }@catch(NSException * ex){
-    callback([ex reason]);
+    callback(@[[ex reason]]);
   }
 }
 
