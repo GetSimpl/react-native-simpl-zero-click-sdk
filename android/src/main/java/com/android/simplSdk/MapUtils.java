@@ -14,26 +14,22 @@ class MapUtils {
         while(iterator.hasNextKey()) {
             String key = iterator.nextKey();
             result.put(key, getValueAsString(map, key));
-
         }
         return result;
     }
 
-    public static HashMap<String, String> stringToHashMap(String stringMap){
-        stringMap = stringMap.replace("{", "");
-        stringMap = stringMap.replace("}", "");
-
-        String[] pairs;
-        if (stringMap.indexOf(",") == -1)
-            pairs = new String[]{stringMap};
-        else pairs  = stringMap.split(",");
-
-        HashMap<String, String> map = new HashMap<>();
-        for (int counter = 0; counter < pairs.length; counter++){
-            String[] keyValue = pairs[counter].split("=");
-            map.put(keyValue[0], keyValue[1]);
+     public static String getValueAsString(ReadableMap map, String key){
+        ReadableType type = map.getType(key);
+        switch (type) {
+            case String:
+                return map.getString(key);
+            case Boolean:
+                return String.valueOf(map.getBoolean(key));
+            case Number:
+                return String.valueOf(map.getDouble(key));
+            case Null:
+                return "";
         }
-
-        return map;
+        return "";
     }
 }

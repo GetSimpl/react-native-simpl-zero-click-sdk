@@ -21,7 +21,7 @@ RCT_EXPORT_METHOD(isUserApproved:(NSDictionary *)approvalParams successCallback:
             if(error != nil) {
                 errorCallback(@[[error localizedDescription]]);
             } else {
-                successCallback(@[@(approved)]);
+               successCallback(@[@(approved), @(isFirstTransactionOfUser), buttonText]);
             }
         }];
     } @catch(NSException * ex) {
@@ -29,23 +29,21 @@ RCT_EXPORT_METHOD(isUserApproved:(NSDictionary *)approvalParams successCallback:
     }
 }
 
-
-RCT_EXPORT_METHOD(isApproved:(NSString *)merchantId mobileNumber:(NSString *)mobileNumber emailId:(NSString *)emailId isSandbox:(BOOL)isSandbox successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback amountInPaisa:(NSString *)amountInPaisa) {
-  @try {
-    [GSManager initializeWithMerchantID:merchantId];
-    [GSManager enableSandBoxEnvironment:isSandbox];
-    self.user = [[GSUser alloc] initWithPhoneNumber:mobileNumber email:emailId];
-    [[GSManager sharedManager] checkApprovalForUser:self.user onCompletion:^(BOOL approved, BOOL isFirstTransactionOfUser, NSString * _Nullable buttonText, NSError * _Nullable error) {
+RCT_EXPORT_METHOD(isApproved:(NSString *)merchantId mobileNumber:(NSString *)mobileNumber emailId:(NSString *)emailId isSandbox:(BOOL)isSandbox successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseErrorBlock)errorCallback) {
+    @try {
+      [GSManager initializeWithMerchantID:merchantId];
+      [GSManager enableSandBoxEnvironment:isSandbox];
+      self.user = [[GSUser alloc] initWithPhoneNumber:mobileNumber email:emailId];
+      [[GSManager sharedManager] checkApprovalForUser:self.user onCompletion:^(BOOL approved, BOOL isFirstTransactionOfUser, NSString * _Nullable buttonText, NSError * _Nullable error) {
         if(error != nil) {
-            errorCallback(@[[error localizedDescription]]);
+             errorCallback(@[[error localizedDescription]]);
         } else {
             successCallback(@[@(approved)]);
         }
-    }];
-  } @catch(NSException * ex){
-    errorCallback(@[[ex reason]]);
-  }
-
+      }];
+    }@catch (NSException * ex){
+      errorCallback(@[[ex reason]]);
+    }
 }
 
 RCT_EXPORT_METHOD(generateZeroClickToken:(RCTResponseSenderBlock)successCallback errorCallback: (RCTResponseSenderBlock)errorCallback) {

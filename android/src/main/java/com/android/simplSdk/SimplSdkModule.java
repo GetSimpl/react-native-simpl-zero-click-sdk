@@ -7,6 +7,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.simpl.android.fingerprint.SimplFingerprint;
 import com.simpl.android.fingerprint.SimplFingerprintListener;
 import com.simpl.android.zeroClickSdk.Simpl;
@@ -16,6 +17,7 @@ import com.simpl.android.zeroClickSdk.SimplUser;
 import com.simpl.android.zeroClickSdk.SimplUserApprovalListenerV2;
 import com.simpl.android.zeroClickSdk.SimplZeroClickTokenAuthorization;
 import com.simpl.android.zeroClickSdk.SimplZeroClickTokenListener;
+import com.simpl.android.zeroClickSdk.SimplUserApprovalRequest;
 
 import java.util.HashMap;
 
@@ -24,6 +26,11 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
 
     public SimplSdkModule(ReactApplicationContext reactContext) {
         super(reactContext);
+    }
+
+    @Override
+    public String getName(){
+        return "SimplSdk";
     }
 
     @ReactMethod
@@ -35,23 +42,32 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                 Simpl.getInstance().runInSandboxMode();
 
             SimplUser user = new SimplUser(map.getString("email"), map.getString("phone_number"));
-            Simpl.getInstance().isUserApproved(user)
-                .addParam("transaction_amount_in_paisa", paramsMap.getString("amount_in_paisa"))
-                .execute(new SimplUserApprovalListenerV2() {
-                        @Override
-                        public void onSuccess(final boolean isUserApproved, String buttonText, boolean showSimplIntroduction){
-                            successCallback.invoke(isUserApproved);
-                        }
-
-                        @Override
-                        public void onError(Throwable throwable){
-                            errorCallback.invoke(throwable.getLocalizedMessage());
-                        }
-                    });
+            SimplUserApprovalRequest simpl = Simpl.getInstance().isUserApproved(user);
+            simpl = addParams(paramsMap, simpl);
+            simpl.execute(new SimplUserApprovalListenerV2() {
+                    @Override
+                    public void onSuccess(final boolean isUserApproved, String buttonText, boolean showSimplIntroduction){
+                        successCallback.invoke(isUserApproved, showSimplIntroduction, buttonText);
+                    }
+                    @Override
+                    public void onError(Throwable throwable){
+                        errorCallback.invoke(throwable.getMessage());
+                    }
+                });
         } catch(Exception ex){
             errorCallback.invoke(ex.getMessage());
         }
 
+    }
+
+    private SimplUserApprovalRequest addParams(ReadableMap map, SimplUserApprovalRequest simpl){
+        ReadableMapKeySetIterator iterator = map.keySetIterator();
+        while(iterator.hasNextKey()) {
+            String key = iterator.nextKey();
+            simpl.addParam(key, MapUtils.getValueAsString(map, key));
+        }
+
+        return simpl;
     }
 
     @ReactMethod
@@ -71,7 +87,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
 
                         @Override
                         public void onError(Throwable throwable) {
-                            errorCallback.invoke(throwable.getLocalizedMessage());
+                            errorCallback.invoke(throwable.getMessage());
                         }
                     });
         }catch(Exception ex){
@@ -90,7 +106,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
 
                     @Override
                     public void onFailure(Throwable throwable) {
-                        errorCallback.invoke(throwable.getLocalizedMessage());
+                        errorCallback.invoke(throwable.getMessage());
                     }
                 });
         } catch(Exception ex){
@@ -110,7 +126,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
 
                 @Override
                 public void onError(final Throwable throwable) {
-                    errorCallback.invoke(throwable.getLocalizedMessage());
+                    errorCallback.invoke(throwable.getMessage());
                 }
             });
         } catch(Exception ex){
