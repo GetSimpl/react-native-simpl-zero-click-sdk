@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
-    "react-native": "0.55.4",
+    "react-native": "0.58.4",
     "react-native-simpl-zero-click-sdk": "1.0.3"
   },
   "devDependencies": {

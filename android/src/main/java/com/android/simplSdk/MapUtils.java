@@ -7,18 +7,18 @@ import com.facebook.react.bridge.ReadableType;
 import java.util.HashMap;
 
 class MapUtils {
-    static HashMap<String, String> toHashMap(ReadableMap map) {
+
+    public static HashMap<String, String> toHashMap(ReadableMap map) {
         ReadableMapKeySetIterator iterator = map.keySetIterator();
         HashMap<String, String> result = new HashMap<>();
         while(iterator.hasNextKey()) {
             String key = iterator.nextKey();
             result.put(key, getValueAsString(map, key));
-
         }
         return result;
     }
 
-    private static String getValueAsString(ReadableMap map, String key){
+     public static String getValueAsString(ReadableMap map, String key){
         ReadableType type = map.getType(key);
         switch (type) {
             case String:

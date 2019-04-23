@@ -54,10 +54,11 @@ If you are not using Cocoapods, Link the Framework from [here](https://github.co
 
 ```javascript
 import SimplSdk from 'react-native-simpl-zero-click-sdk'
-//To check either user is approved or not
-SimplSdk.isApproved('<merchant_id>', '<phone_number>', '<email>', true /*To test in sandbox mode*/,
-      (approved) => console.log(`User approved: ${approved}`) /* true if user is approved, false otherwise */,
-      (errorMessage) => console.log(`User approval error: ${errorMessage}`) /* error occured during network call */);
+
+// To check either user is approved or not
+ SimplSdk.isUserApproved({merchantId: '<merchant id>', isSandbox: true, phone_number: '<phone_number>', email: '<email>', params: { amount_in_paise: 1000 }},
+                        (approved, isFirstTransaction, buttonText) => console.log(approved)),
+                        (errorMessage) => console.log(errorMessage));
 
 //To generate zero-click token
 SimplSdk.generateZeroClickToken((token) => console.log(token), (errorMessage) => console.log(errorMessage))
