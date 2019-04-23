@@ -42,9 +42,9 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
                 Simpl.getInstance().runInSandboxMode();
 
             SimplUser user = new SimplUser(map.getString("email"), map.getString("phone_number"));
-            SimplUserApprovalRequest simpl = Simpl.getInstance().isUserApproved(user);
-            simpl = addParams(paramsMap, simpl);
-            simpl.execute(new SimplUserApprovalListenerV2() {
+            SimplUserApprovalRequest simplUserApprovalRequest = Simpl.getInstance().isUserApproved(user);
+            simplUserApprovalRequest = addParams(paramsMap, simplUserApprovalRequest);
+            simplUserApprovalRequest.execute(new SimplUserApprovalListenerV2() {
                     @Override
                     public void onSuccess(final boolean isUserApproved, String buttonText, boolean showSimplIntroduction){
                         successCallback.invoke(isUserApproved, showSimplIntroduction, buttonText);
@@ -60,11 +60,11 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
 
     }
 
-    private SimplUserApprovalRequest addParams(ReadableMap map, SimplUserApprovalRequest simpl){
+    private SimplUserApprovalRequest addParams(ReadableMap map, SimplUserApprovalRequest simplUserApprovalRequest){
         ReadableMapKeySetIterator iterator = map.keySetIterator();
         while(iterator.hasNextKey()) {
             String key = iterator.nextKey();
-            simpl.addParam(key, MapUtils.getValueAsString(map, key));
+            simplUserApprovalRequest.addParam(key, MapUtils.getValueAsString(map, key));
         }
 
         return simpl;
