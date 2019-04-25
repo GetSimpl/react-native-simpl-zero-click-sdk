@@ -67,7 +67,7 @@ public class SimplSdkModule extends ReactContextBaseJavaModule {
             simplUserApprovalRequest.addParam(key, MapUtils.getValueAsString(map, key));
         }
 
-        return simpl;
+        return simplUserApprovalRequest;
     }
 
     @ReactMethod
