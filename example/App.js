@@ -24,7 +24,8 @@ export default class App extends Component<Props> {
   }
 
   componentDidMount() {
-    SimplSdk.isApproved('<merchant_id>', '2212345678', 'email@example.com', true, (approved) => {
+    this.generateFingerprint();
+    SimplSdk.isUserApproved({merchantId: '<merchant id>', isSandbox: true, phone_number: '<phone_number>', email: '<email>', params: { amount_in_paise: 1000 }}, (approved) => {
       console.log("approved: " + approved);
       this.setState({ isSimplApproved: approved });
     }, (error) => {
