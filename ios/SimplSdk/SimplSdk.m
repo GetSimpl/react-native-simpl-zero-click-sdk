@@ -13,7 +13,7 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(isUserApproved:(NSDictionary *)approvalParams successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback){
     @try{
         [GSManager initializeWithMerchantID: approvalParams[@"merchantId"]];
-        [GSManager enableSandBoxEnvironment: approvalParams[@"isSandbox"]];
+        [GSManager enableSandBoxEnvironment: [approvalParams[@"isSandbox"] boolValue]];
         self.user= [[GSUser alloc] initWithPhoneNumber:approvalParams[@"phone_number"] email:approvalParams[@"email"]];
         NSDictionary *params = approvalParams[@"params"];
         [self.user setHeaderParams:params];
