@@ -1,5 +1,0 @@
-rootProject.name = 'example'
-include ':react-native-simpl-zero-click-sdk'
-project(':react-native-simpl-zero-click-sdk').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-simpl-zero-click-sdk/android')
-
-include ':app'
