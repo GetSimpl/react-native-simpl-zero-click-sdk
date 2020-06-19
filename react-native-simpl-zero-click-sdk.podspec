@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
 
   s.source       = { :git => "https://github.com/GetSimpl/react-native-simpl-zero-click-sdk.git", :tag => "v#{s.version}" }
-  s.source_files  = "src/ios/**/*.{h,m}"
+  s.source_files  = "ios/**/*.{h,m}"
 
   s.dependency 'React'
   s.dependency 'SimplZeroClick'
