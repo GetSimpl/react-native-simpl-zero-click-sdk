@@ -13,7 +13,7 @@
     "prepare": "bob build",
     "release": "release-it",
     "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn && yarn pods"
+    "bootstrap": "yarn && yarn --cwd example && yarn pods"
   },
   "repository": "https://github.com/GetSimpl/react-native-simpl-zero-click-sdk",
   "bugs": {

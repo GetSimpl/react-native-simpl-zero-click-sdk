@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
-import { useSimpl } from "./useSimpl";
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { useSimpl } from './useSimpl';
 
 function ZeroClickToken({ generateZeroClickToken }) {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState('');
 
   return (
     <>
@@ -17,7 +17,7 @@ function ZeroClickToken({ generateZeroClickToken }) {
 }
 
 function FPData({ getSimplFingerprintData }) {
-  const [fpData, setFPData] = useState("");
+  const [fpData, setFPData] = useState('');
 
   return (
     <>
@@ -32,10 +32,10 @@ function FPData({ getSimplFingerprintData }) {
 
 export default function App() {
   const { generateZeroClickToken, getSimplFingerprintData } = useSimpl({
-    clientId: "<client-id>",
+    clientId: '<client-id>',
     isSandbox: true,
-    phoneNumber: "<phone-number>",
-    email: "<email>",
+    phoneNumber: '<phone-number>',
+    email: '<email>',
   });
 
   return (
@@ -50,18 +50,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   text: {
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
     margin: 10,
   },
   fptext: {
     fontSize: 14,
-    textAlign: "center",
+    textAlign: 'center',
     margin: 10,
   },
   button: {
