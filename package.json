@@ -1,6 +1,6 @@
 {
   "name": "react-native-simpl-zero-click-sdk",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A React Native wrapper for Simpl Zero Click SDK",
   "main": "index.js",
   "keywords": [
