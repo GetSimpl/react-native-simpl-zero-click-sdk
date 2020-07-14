@@ -1,4 +1,4 @@
-import SimplSDK from "react-native-simpl-zero-click-sdk";
+import SimplSDK from 'react-native-simpl-zero-click-sdk';
 
 function useSimpl({ clientId, isSandbox, phoneNumber, email }) {
   const getSimplFingerprintData = () =>
