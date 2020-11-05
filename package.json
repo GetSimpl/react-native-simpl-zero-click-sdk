@@ -1,19 +1,31 @@
 {
   "name": "react-native-simpl-zero-click-sdk",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A React Native wrapper for Simpl Zero Click SDK",
   "main": "index.js",
+  "scripts": {
+    "example": "yarn --cwd example",
+    "pods": "cd example && pod-install --quiet",
+    "bootstrap": "yarn example && yarn && yarn pods"
+  },
+  "devDependencies": {
+    "pod-install": "^0.1.12"
+  },
   "keywords": [
     "simpl",
     "simpl-zero-click-sdk",
     "react-native"
   ],
-  "author": "Simpl",
+  "author": "kamalnrf",
   "contributors": [
     {
       "name": "Devarajan",
       "email": "devarajan@getsimpl.com"
+    },
+    {
+      "name": "Kamal",
+      "email": "kamalnrf@getsimpl.com"
     }
   ],
-  "license": ""
+  "license": "MIT"
 }
